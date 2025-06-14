@@ -1,5 +1,4 @@
-# server/Dockerfile
-FROM golang:1.21-alpine
+FROM golang:1.23.6-alpine
 
 WORKDIR /app
 COPY . .
