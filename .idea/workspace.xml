@@ -34,7 +34,7 @@
     "DefaultGoTemplateProperty": "Go File",
     "Docker.client/Dockerfile.executor": "Run",
     "Docker.server/Dockerfile.executor": "Run",
-    "Go Build.go build main.go.executor": "Debug",
+    "Go Build.go build main.go.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",

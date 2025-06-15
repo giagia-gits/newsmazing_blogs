@@ -2,14 +2,27 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [message, setMessage] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("/api/hello")
-        .then((res) => res.json())
-        .then((data) => setMessage(data.message));
+    console.log("Fetching /api/hello...");
+    fetch("http://3.22.70.110:8080/api/hello")
+        .then((res) => {
+          if (!res.ok) throw new Error("API error");
+          return res.json();
+        })
+        .then((data) => setMessage(data.message))
+        .catch((err) => {
+          console.error("Fetch error:", err);
+          setError("Failed to fetch message");
+        });
   }, []);
 
-  return <h1>{message}</h1>;
+  return (
+      <div>
+        <h1>{message || error}</h1>
+      </div>
+  );
 }
 
 export default App;

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"encoding/json"
 	"log"
 	"net/http"
 
@@ -10,7 +10,10 @@ import (
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello from Go API!")
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{
+		"message": "Hello from Go API!",
+	})
 }
 
 func main() {
@@ -19,8 +22,8 @@ func main() {
 
 	// Define allowed CORS options
 	corsOptions := handlers.CORS(
-		handlers.AllowedOrigins([]string{"*"}), // or specify frontend origin
-		handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}),
+		handlers.AllowedOrigins([]string{"http://3.22.70.110:3000"}), // or specify frontend origin
+		handlers.AllowedOrigins([]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}),
 		handlers.AllowedHeaders([]string{"Content-Type", "Authorization"}),
 	)
 
