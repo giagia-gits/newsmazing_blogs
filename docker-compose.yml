@@ -1,17 +1,12 @@
 services:
   client:
     build: ./client
-    container_name: react_client
     ports:
-      - "3000:80"
+      - "3000:80"  # Port 80 inside container exposed as 3000 outside
     depends_on:
       - server
 
   server:
     build: ./server
-    container_name: golang_server
-    ports:
-      - "8080:8080"
     expose:
       - "8080"
-
