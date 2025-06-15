@@ -1,8 +1,11 @@
-FROM golang:1.23.6-alpine
-
+FROM golang:1.23.6-alpine AS build
 WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
 COPY . .
 RUN go build -o server .
 
-EXPOSE 8080
+FROM alpine
+WORKDIR /app
+COPY --from=build /app/server .
 CMD ["./server"]
