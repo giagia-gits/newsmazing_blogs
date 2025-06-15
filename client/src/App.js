@@ -9,7 +9,7 @@ function App() {
         .then((data) => setMessage(data.message));
   }, []);
 
-  return <h1>{message || "Loading..."}</h1>;
+  return <h1>{message}</h1>;
 }
 
 export default App;
