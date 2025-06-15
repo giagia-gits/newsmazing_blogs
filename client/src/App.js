@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     console.log("Fetching /api/hello...");
-    fetch("http://3.22.70.110:8080/api/hello")
+    fetch("/api/hello")
         .then((res) => {
           if (!res.ok) throw new Error("API error");
           return res.json();
