@@ -1,12 +1,14 @@
 services:
-  server:
-    build:
-      context: ./server
-    ports:
-      - "8080:8080"
-
   client:
-    build:
-      context: ./client
+    build: ./client
+    container_name: react_client
     ports:
       - "3000:80"
+    depends_on:
+      - server
+
+  server:
+    build: ./server
+    container_name: golang_server
+    ports:
+      - "8080:8080"
