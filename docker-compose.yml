@@ -1,10 +1,10 @@
 services:
   client:
     build: ./client
-    ports:
-      - "3000:80"  # Port 80 inside container exposed as 3000 outside
     depends_on:
       - server
+    ports:
+      - "3000:80"
 
   server:
     build: ./server
